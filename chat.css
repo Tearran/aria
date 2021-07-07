@@ -1,0 +1,76 @@
+body {
+	background-color: #000000;
+	font-family: Verdana,Arial,Helvetica,sans-serif;
+	//font-size: small;
+	color: #00ff00;
+}
+h1 {
+	font-weight: bold;
+	font-size: 24pt;
+	color: #0000FF;
+}
+input[type=button], input[type=submit], input[type=reset] {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+input[type=text] {
+  background-color: #333333;
+}
+
+fieldset {
+	//border: 1px dotted #000000;
+}
+legend {
+	font-weight: bold;
+}
+input#message {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  border: none;
+}
+div#dialogue {
+	overflow: auto;
+	height: 450px;
+	width: 100%;
+}
+div#debug {
+	overflow: auto;
+	max-height: 450px;
+	width: 100%;
+}
+code {
+	font-family: monospace;
+	//font-size: medium;
+	color: #D00;
+}
+span.user {
+	font-weight: bold;
+	color: #0000FF;
+}
+span.bot {
+	font-weight: bold;
+	color: #FF0000;
+}
+table.input-table {
+	border: 0px;
+	border-collapse: separate;
+	border-spacing: 4px;
+	width: 100%;
+}
+table.input-table td.text-box {
+	padding: 4px;
+	text-align: left;
+	vertical-align: middle;
+}
+table.input-table td.send-button {
+	padding: 4px;
+	text-align: center;
+	vertical-align: middle;
+	width: 10px;
+}
