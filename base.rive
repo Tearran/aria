@@ -17,11 +17,13 @@
 + * 
 - ARIA™ has not learned a responce translation to :<star>.
 ^
-^ You can contribute to the translation 
+^ You can contribute to the translation.
+^
 ^ Give a Example <call>example </call>
+^
 ^ Offer a donation to help with expences <call>paypal </call>.
 ^ 
-
+^ Contribute on Githib  <call>github </call>
 
 > object example javascript
 	return "<a href='https://socialartcasts.com/ARIA/statement.php'>Click Here!</a>";
@@ -35,6 +37,9 @@
 > object paypal javascript
 	var query = escape(args.join(" "));
 	return "<a href='https://www.paypal.com/donate?hosted_button_id=DFCMN5CVETWL4'>Donate Here!</a>";
+< object
+> object github javascript
+	return "<a href='https://github.com/Tearran/aria'>Donate Here!</a>";
 < object
 
 
