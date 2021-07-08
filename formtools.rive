@@ -1,0 +1,38 @@
+! version = 2.0
+! local concat = newline
+
++about
++ (version|v|ver|vrs)
+-  <fullname> ARIA™ v.000001.a
+
++about
+- ARIA™ v.000001.a
+// If the user begins a message with "google" it will create
++ * 
+- ARIA™ has not learned a responce translation to :<star>.
+^
+^ You can contribute to the translation. <call>form </call>
+^ Offer a donation to help with expences <call>paypal </call>. 
+^ Contribute on Githib  <call>github </call>
+
+> object example javascript
+	return "<a href='https://socialartcasts.com/ARIA/statement.php'>Click Here!</a>";
+< object
+
+> object google javascript
+	var query = escape(args.join(" "));
+	return "<a href=\"http://www.google.com/search?q=" + query + "&ia=definition\">Click Here!</a>";
+< object
+
+> object form javascript
+	return "<form action='https://socialartcasts.com/systool/process.php' method='post'><input type='hidden' name='form_tools_form_id' value='2' />Common Expression (Idioms)<input type='text' name='field1' value='' class='cf_size_medium' />Translation<input type='text' name='field2' value='' class='cf_size_medium' />Common Replay<input type='text' name='field3' value='' class='cf_size_medium' /><input type='submit' name='form_tools_continue' value='Continue' /></form>";
+< object
+
+> object paypal javascript
+	var query = escape(args.join(" "));
+	return "<a href='https://www.paypal.com/donate?hosted_button_id=DFCMN5CVETWL4'>Donate Here!</a>";
+< object
+
+> object github javascript
+	return "<a href='https://github.com/Tearran/aria'>Git repo!</a>";	
+< object

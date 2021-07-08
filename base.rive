@@ -4,45 +4,10 @@
 	+ request // This trigger is tested first.
 	- {ok}    // An {ok} in the response means it's okay to get a real reply
 < begin
+
 + hi
 - Hi
 - Hello
-
-+ (version|v|ver|vrs)
--  <fullname> ARIA™ v.000001.a
-
-+about
-- ARIA™ v.000001.a
-// If the user begins a message with "google" it will create
-+ * 
-- ARIA™ has not learned a responce translation to :<star>.
-^
-^ You can contribute to the translation.
-^
-^ Give a Example <call>example </call>
-^
-^ Offer a donation to help with expences <call>paypal </call>.
-^ 
-^ Contribute on Githib  <call>github </call>
-
-> object example javascript
-	return "<a href='https://socialartcasts.com/ARIA/statement.php'>Click Here!</a>";
-< object
-
-> object google javascript
-	var query = escape(args.join(" "));
-	return "<a href=\"http://www.google.com/search?q=" + query + "&ia=definition\">Click Here!</a>";
-< object
-
-> object paypal javascript
-	var query = escape(args.join(" "));
-	return "<a href='https://www.paypal.com/donate?hosted_button_id=DFCMN5CVETWL4'>Donate Here!</a>";
-< object
-> object github javascript
-	return "<a href='https://github.com/Tearran/aria'>Donate Here!</a>";
-< object
-
-
 
 ! array version = v ver vrs
 ! array hi = hello hi howdy

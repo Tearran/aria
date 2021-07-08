@@ -1,3 +1,4 @@
+<?php ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,6 +26,7 @@ html, body {
 	background-color: #000000;
 	color: #00FF00;
 	height: 100vh;
+	margin:0;
 }
 a:link {
   color: #ffffff;
@@ -32,7 +34,7 @@ a:link {
 
 /* visited link */
 a:visited {
-  color: #00FF00;
+  color: #ffFFff;
 }
 
 /* mouse over link */
@@ -42,7 +44,7 @@ a:hover {
 
 /* selected link */
 a:active {
-  color: #00ff00;
+  color: #ffffff;
 }
 
 fieldset{
@@ -72,13 +74,14 @@ input#message, input[type=text] {
 
 div#dialogue {
 	overflow: auto;
+	min-height: 50vh;
 	height: 75vh;
 	width: 100%;
 }
 
 div#debug {
 	overflow: auto;
-	max-height: 24vh;
+	max-height: 90vh;
 	width: 100%;
 }
 
@@ -168,11 +171,8 @@ table.input-table td.send-button {
 	</p>
 </div>
 
-<fieldset id="ChatLog">
-	<legend>Chat Log</legend>
-	<div id="dialogue"></div>
-</fieldset>
-<form onSubmit="return sendMessage()">
+
+<form action="index.php" method="post " onSubmit="return sendMessage()">
 
 	<fieldset id="InputUser">
 		<legend>Send a Message</legend>
@@ -189,8 +189,13 @@ table.input-table td.send-button {
 		</table>
 	</fieldset>
 </form>
+<fieldset id="ChatLog">
+	<legend>Chat Log</legend>
+	<div id="dialogue"></div>
+</fieldset>
 
-<!--//--><fieldset>
+
+<!--<fieldset>
 	<legend>Debugger</legend>
 
 	<input type="button" value="Debug Mode" id="toggle" onClick="toggleDebug()">
@@ -198,7 +203,7 @@ table.input-table td.send-button {
 	<input type="button" value="Dump Data Structure" onClick="DumperPopup(rs)">
 
 	<div id="debug"></div>
-</fieldset>
+</fieldset>//-->
 
 
 	<script
@@ -246,6 +251,7 @@ if (window.RiveScript === undefined) {
 	// Load our files from the brain/ folder.
 	rs.loadFile([
 		"base.rive",
+		//"formtools.rive",
 		//"brain/begin.rive",
 		//"brain/admin.rive",
 		//"brain/clients.rive",
@@ -263,7 +269,7 @@ if (window.RiveScript === undefined) {
 }
 
 function onReady() {
-	$("#dialogue").append("<div><center> Welcome, this is an Automated Inqirey Responce Aid (ARIA™) version 0 alpha 1 + RS " + rs.version() + ", ready to Respond!</center></div>");
+	$("#dialogue").append("<div><center> Welcome, this is an Automated Inqirey Response Aid (ARIA™) version 0 alpha 1 + RS " + rs.version() + ", ready to Respond!<BR> Type a expression.</center></div>");
 	$("#message").removeAttr("disabled");
 	$("#message").attr("placeholder", "Send message");
 	$("#message").focus();
