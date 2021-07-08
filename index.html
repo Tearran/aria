@@ -15,7 +15,7 @@
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=no">
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1, maximum-scale=2"> -->
     <style>
-        /* following two viewport lines are equivalent to meta viewport statement above, and is needed for Windows */
+      /* following two viewport lines are equivalent to meta viewport statement above, and is needed for Windows */
         /* see http://www.quirksmode.org/blog/archives/2014/05/html5_dev_conf.html and http://dev.w3.org/csswg/css-device-adapt/ */
     @-ms-viewport { width: 100vw ; min-zoom: 100% ; zoom: 100% ; }          @viewport { width: 100vw ; min-zoom: 100% zoom: 100% ; }
     @-ms-viewport { user-zoom: fixed ; min-zoom: 100% ; }                   @viewport { user-zoom: fixed ; min-zoom: 100% ; }
@@ -25,6 +25,24 @@ html, body {
 	background-color: #000000;
 	color: #00FF00;
 	height: 100vh;
+}
+a:link {
+  color: #ffffff;
+}
+
+/* visited link */
+a:visited {
+  color: #00FF00;
+}
+
+/* mouse over link */
+a:hover {
+  color: hotpink;
+}
+
+/* selected link */
+a:active {
+  color: #00ff00;
 }
 
 fieldset{
@@ -48,11 +66,8 @@ input#message, input[type=text] {
 	color: #00FF00;
 	padding: 12px 20px;
 	box-sizing: border-box;
-	border: none;
-}
-
-input {
-  width: 100%;
+	border: none;  
+	width: 100%;
 }
 
 div#dialogue {
@@ -67,20 +82,18 @@ div#debug {
 	width: 100%;
 }
 
-
-
 code {
 	font-family: monospace;
 	color: #D00;
 }
-legend {
-	font-weight: bold;
-}
+
 span.user {
 	font-weight: bold;
+	color: #CfC
 }
 span.bot {
 	font-weight: bold;
+	color: #CfC
 }
 	
 table.input-table {
@@ -177,7 +190,7 @@ table.input-table td.send-button {
 	</fieldset>
 </form>
 
-<!--<fieldset>
+<!--//--><fieldset>
 	<legend>Debugger</legend>
 
 	<input type="button" value="Debug Mode" id="toggle" onClick="toggleDebug()">
@@ -185,11 +198,21 @@ table.input-table td.send-button {
 	<input type="button" value="Dump Data Structure" onClick="DumperPopup(rs)">
 
 	<div id="debug"></div>
-</fieldset>//-->
+</fieldset>
 
-<script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+
+	<script
+		src="https://code.jquery.com/jquery-1.12.4.min.js"
+		integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+		crossorigin="anonymous">
+	</script>
+	
+	<script 	
+		src="https://unpkg.com/rivescript@latest/dist/rivescript.min.js"
+		crossorigin="anonymous"> 
+	</script>
+	
 <script type="text/javascript" src="datadumper.js"></script>
-<script type="text/javascript" src="rivescript.js"></script>
 <script type="text/javascript">
 // Handle the debug mode query string parameter.
 var debugMode = false;
@@ -222,7 +245,7 @@ if (window.RiveScript === undefined) {
 
 	// Load our files from the brain/ folder.
 	rs.loadFile([
-	"testsuite.rive"
+		"base.rive",
 		//"brain/begin.rive",
 		//"brain/admin.rive",
 		//"brain/clients.rive",
@@ -240,7 +263,7 @@ if (window.RiveScript === undefined) {
 }
 
 function onReady() {
-	$("#dialogue").append("<div><span class='bot'>ARIA:</span> Welcome, this is an automated inqirey responce aid (ARIA™) version 0 alpha 1 + RS " + rs.version() + ", ready to chat!");
+	$("#dialogue").append("<div><center> Welcome, this is an Automated Inqirey Responce Aid (ARIA™) version 0 alpha 1 + RS " + rs.version() + ", ready to Respond!</center></div>");
 	$("#message").removeAttr("disabled");
 	$("#message").attr("placeholder", "Send message");
 	$("#message").focus();
@@ -257,11 +280,11 @@ function onError(err, filename, lineno) {
 function sendMessage () {
 	var text = $("#message").val();
 	$("#message").val("");
-	$("#dialogue").append("<div><span class='user'>You:</span> " + text + "</div>");
+	$("#dialogue").append("<fieldset id=\"bubble\"><legend class='user'>You:</legend> " + text + "</div></fieldset>");
 
 	rs.reply("soandso", text, this).then(function(reply) {
 		reply = reply.replace(/\n/g, "<br>");
-		$("#dialogue").append("<div><span class='bot'>ARIA:</span> " + reply + "</div>");
+		$("#dialogue").append("<fieldset id=\"bubble\"><legend class='bot'>ARIA:</legend> " + reply + "</div></fieldset>");
 		$("#dialogue").animate({ scrollTop: $("#dialogue").height() }, 1000);
 	}).catch(function(e) {
 		window.alert(e.message + "\n" + e.line);
